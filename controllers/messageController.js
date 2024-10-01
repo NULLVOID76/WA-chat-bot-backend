@@ -6,8 +6,9 @@ import ChatMessage from '../models/chatMessage.js';
 // Handle incoming WhatsApp messages
 export const handleIncomingMessages = async (req, res) => {
   console.log(req.body.entry[0].changes[0].value.messages[0]);
-  /*
-  const { profile,from, text ,id} = req.body.entry[0].changes[0].value.messages[0];
+  console.log(req.body.entry[0].changes[0].value.contacts[0].profile);
+  
+  const {from, text ,id} = req.body.entry[0].changes[0].value.messages[0];
   const messageBody = text.body.toLowerCase();  // User's message in lowercase
 
   // Check if session has expired
@@ -54,7 +55,7 @@ export const handleIncomingMessages = async (req, res) => {
   } catch (err) {
     console.error('Error storing chat:', err);
     res.sendStatus(500);
-  }*/
+  }
 };
 
 // Webhook verification for WhatsApp API
