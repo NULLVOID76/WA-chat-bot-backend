@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const WHATSAPP_API_URL = `https://graph.facebook.com/${process.env.VERSION}/${process.env.PHONE_NUMBER_ID}/messages`;
-const ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
+const WHATSAPP_API_URL = `https://graph.facebook.com/${process.env.VERSION}/${process.env.PHONE_NUMBER_ID}/messages?access_token=${process.env.WHATSAPP_ACCESS_TOKEN}`;
+// const ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 
 // Send a simple text message
 export const sendTextMessage = (to, text) => {
@@ -12,9 +12,7 @@ export const sendTextMessage = (to, text) => {
     text: { body: text },
   };
 
-  axios.post(WHATSAPP_API_URL, data, {
-    headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-  })
+  axios.post(WHATSAPP_API_URL, data)
     .then(response => console.log('Message sent:', response.data))
     .catch(error => console.error('Error sending message:', error.response ? error.response.data : error.message));
 };
