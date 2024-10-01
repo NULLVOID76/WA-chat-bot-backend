@@ -4,13 +4,17 @@ const WHATSAPP_API_URL = `https://graph.facebook.com/${process.env.VERSION}/${pr
 
 // Send a simple text message
 export const sendTextMessage = (to, text) => {
+  
   const data = {
     messaging_product: 'whatsapp',
     to: to,
     type: 'text',
     text: { body: text },
   };
-
+  console.log(WHATSAPP_API_URL);
+  console.log(data);
+  
+  
   axios.post(WHATSAPP_API_URL, data)
     .then(response => console.log('Message sent:', response.data))
     .catch(error => console.error('Error sending message:', error.response ? error.response.data : error.message));
