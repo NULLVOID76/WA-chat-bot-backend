@@ -5,7 +5,7 @@ import ChatMessage from '../models/chatMessage.js';
 
 // Handle incoming WhatsApp messages
 export const handleIncomingMessages = async (req, res) => {
-  const { profile,from, to, text ,id} = req.body.entry[0].changes[0].value.messages[0];
+  const { profile,from, text ,id} = req.body.entry[0].changes[0].value.messages[0];
   const messageBody = text.body.toLowerCase();  // User's message in lowercase
 
   // Check if session has expired
@@ -45,7 +45,6 @@ export const handleIncomingMessages = async (req, res) => {
   try {
     const chatMessage = new ChatMessage({
       from,
-      to,
       message: messageBody,
     });
     await chatMessage.save();
