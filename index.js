@@ -5,6 +5,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import chatRoutes from './routes/chatRoutes.js';
 import { verifyWebhook, handleIncomingMessages } from './controllers/messageController.js';
+import { DB_NAME } from './constant.js';
+
 
 dotenv.config();  // Load environment variables
 
@@ -12,19 +14,21 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 
 // API routes for fetching chat data
-app.use('/api', chatRoutes);
+app.get('/api', chatRoutes);
 
 // Webhook verification
 app.get('/webhook', verifyWebhook);
