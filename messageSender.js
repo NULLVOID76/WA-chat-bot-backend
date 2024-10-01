@@ -35,9 +35,7 @@ export const sendButtonMessage = (to, text, buttons) => {
     },
   };
 
-  axios.post(WHATSAPP_API_URL, data, {
-    headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-  })
+  axios.post(WHATSAPP_API_URL, data)
     .then(response => console.log('Button message sent:', response.data))
     .catch(error => console.error('Error sending button message:', error.response ? error.response.data : error.message));
 };
