@@ -5,6 +5,8 @@ import ChatMessage from '../models/chatMessage.js';
 
 // Handle incoming WhatsApp messages
 export const handleIncomingMessages = async (req, res) => {
+  console.log(req.body);
+  /*
   const { profile,from, text ,id} = req.body.entry[0].changes[0].value.messages[0];
   const messageBody = text.body.toLowerCase();  // User's message in lowercase
 
@@ -38,7 +40,7 @@ export const handleIncomingMessages = async (req, res) => {
 
       default:
         sendTextMessage(from, 'Sorry, I didn’t understand that. Please choose from the menu options.');
-    }
+    }*/
   }
 
   // Store chat in the database

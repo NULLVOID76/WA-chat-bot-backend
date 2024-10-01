@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const WHATSAPP_API_URL = `https://graph.facebook.com/${process.env.VERSION}/${process.env.PHONE_NUMBER_ID}/messages?access_token=${process.env.WHATSAPP_ACCESS_TOKEN}`;
-// const ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 
 // Send a simple text message
 export const sendTextMessage = (to, text) => {
