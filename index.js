@@ -36,6 +36,9 @@ app.get('/webhook', verifyWebhook);
 // Handle incoming messages
 app.post('/webhook', handleIncomingMessages);
 
+app.get('/',(req,res)=>{
+  res.send('<h1>server</h1>')
+})
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
