@@ -40,7 +40,7 @@ export const handleIncomingMessages = async (req, res) => {
 
       default:
         sendTextMessage(from, 'Sorry, I didn’t understand that. Please choose from the menu options.');
-    }*/
+    }
   }
 
   // Store chat in the database
@@ -54,7 +54,7 @@ export const handleIncomingMessages = async (req, res) => {
   } catch (err) {
     console.error('Error storing chat:', err);
     res.sendStatus(500);
-  }
+  }*/
 };
 
 // Webhook verification for WhatsApp API
