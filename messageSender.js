@@ -51,6 +51,8 @@ export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
       ],
     },
   };
+  console.log(data);
+  
   axios({
     method: "POST",
     url: WHATSAPP_API_URL,
