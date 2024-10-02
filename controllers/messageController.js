@@ -5,8 +5,8 @@ import ChatMessage from '../models/chatMessage.js';
 
 // Handle incoming WhatsApp messages
 export const handleIncomingMessages = async (req, res) => {
-  console.log(req.body);
-  // console.log(req.body.entry[0].changes[0].value.contacts[0].profile);
+  // console.log(req.body);
+  console.log(req.body.entry[0].changes[0]);
   if(req.body.entry &&
     req.body.entry[0].changes &&
     req.body.entry[0].changes[0].value.messages &&

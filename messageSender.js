@@ -18,12 +18,18 @@ export const sendTextMessage = (to, text) => {
   //   url: WHATSAPP_API_URL,
   //   data: data,
   // });
-  axios.post(WHATSAPP_API_URL, data)
-    .then(response => console.log('Message sent:', response.data))
-    .catch(error => console.error('Error sending message:', error.response ? error.response.data : error.message));
+  axios
+    .post(WHATSAPP_API_URL, data)
+    .then((response) => console.log("Message sent:", response.data))
+    .catch((error) =>
+      console.error(
+        "Error sending message:",
+        error.response ? error.response.data : error.message
+      )
+    );
 };
 
-export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
+export const sendGreetingMessage = (to, senderName, prev_msg_id) => {
   const data = {
     messaging_product: "whatsapp",
     recipient_type: "individual",
@@ -49,15 +55,20 @@ export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
       //     ],
       //   },
       // ],
-    }
+    },
   };
-  
-  axios({
-    method: "POST",
-    url: WHATSAPP_API_URL,
-    data: data,
-  });
-  console.log(data);
+
+  // axios({
+  //   method: "POST",
+  //   url: WHATSAPP_API_URL,
+  //   data: data,
+  // });
+  axios
+    .post(WHATSAPP_API_URL, data)
+    .then((response) => console.log("Message sent:", response.data))
+    .catch((error) => console.error("Error sending message:", error.response ? error.response.data : error.message)
+    );
+  // console.log(data);
 };
 // Send interactive button message
 export const sendButtonMessage = (to, text, buttons) => {
@@ -77,16 +88,11 @@ export const sendButtonMessage = (to, text, buttons) => {
     },
   };
 
-  axios({
-    method: "POST",
-    url: WHATSAPP_API_URL,
-    data: data,
-  });
-  // axios.post(WHATSAPP_API_URL, data)
-  //   .then(response => console.log('Button message sent:', response.data))
-  //   .catch(error => console.error('Error sending button message:', error.response ? error.response.data : error.message));
+  axios.post(WHATSAPP_API_URL, data)
+    .then(response => console.log('Button message sent:', response.data))
+    .catch(error => console.error('Error sending button message:', error.response ? error.response.data : error.message));
 };
-export const readMessage =(prev_msg_id)=>{
+export const readMessage = (prev_msg_id) => {
   axios({
     method: "POST",
     url: WHATSAPP_API_URL,
@@ -96,4 +102,4 @@ export const readMessage =(prev_msg_id)=>{
       message_id: prev_msg_id,
     },
   });
-}
+};
