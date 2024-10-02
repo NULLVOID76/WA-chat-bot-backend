@@ -1,4 +1,4 @@
-import { sendTextMessage, sendButtonMessage ,greetingMessage} from '../messageSender.js';
+import { sendTextMessage, sendButtonMessage ,sendGreetingMessage} from '../messageSender.js';
 import { updateSession, isSessionExpired, resetSession } from './sessionManager.js';
 import { formatMainMenuButtons, formatUGAdmissionButtons } from './messageFormatter.js';
 import ChatMessage from '../models/chatMessage.js';
@@ -28,7 +28,7 @@ export const handleIncomingMessages = async (req, res) => {
     
     // Send greeting with main menu
     // sendTextMessage(from, 'Learn more about MMMUT here: [LINK]');
-    greetingMessage(from,name);
+    sendGreetingMessage(from,name);
     // sendButtonMessage(from, 'Greetings of the day! Please choose from one of the following:', formatMainMenuButtons());
   } else {
     updateSession(from);  // Update session timestamp

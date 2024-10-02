@@ -24,7 +24,7 @@ export const sendTextMessage = (to, text) => {
 };
 
 // Send interactive button message
-export const greetingMessage = (to, name) => {
+export const sendGreetingMessage = (to, name) => {
   const data = {
     messaging_product: "whatsapp",
     to,
@@ -51,6 +51,11 @@ export const greetingMessage = (to, name) => {
       ],
     },
   };
+  axios({
+    method: "POST",
+    url: WHATSAPP_API_URL,
+    data: data,
+  });
 };
 export const sendButtonMessage = (to, text, buttons) => {
   const data = {
