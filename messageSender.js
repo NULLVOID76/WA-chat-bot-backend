@@ -40,18 +40,19 @@ export const sendGreetingMessage = (to, senderName, prev_msg_id) => {
     template: {
       name: "greeting",
       language: {
-        code: "en_UK"
-      // components: [
-      //   {
-      //     type: "body",
-      //     parameters: [
-      //       {
-      //         type: "text",
-      //         text: senderName,
-      //       },
-      //     ],
-      //   },
-      // ],
+        code: "en_UK",
+        // components: [
+        //   {
+        //     type: "body",
+        //     parameters: [
+        //       {
+        //         type: "text",
+        //         text: senderName,
+        //       },
+        //     ],
+        //   },
+        // ],
+      },
     },
   };
 
