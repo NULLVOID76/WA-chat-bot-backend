@@ -1,42 +1,69 @@
-import axios from 'axios';
+import axios from "axios";
 
 const WHATSAPP_API_URL = `https://graph.facebook.com/v13.0/${process.env.PHONE_NUMBER_ID}/messages?access_token=${process.env.WHATSAPP_ACCESS_TOKEN}`;
 
 // Send a simple text message
 export const sendTextMessage = (to, text) => {
-  
   console.log(WHATSAPP_API_URL);
   const data = {
-    messaging_product: 'whatsapp',
+    messaging_product: "whatsapp",
     to: to,
-    type: 'text',
+    type: "text",
     text: { body: text },
   };
   console.log(data);
-  
+
   axios({
-        method: "POST",
-        url: WHATSAPP_API_URL,
-        data: data
-      });
+    method: "POST",
+    url: WHATSAPP_API_URL,
+    data: data,
+  });
   // axios.post(WHATSAPP_API_URL, data)
   //   .then(response => console.log('Message sent:', response.data))
   //   .catch(error => console.error('Error sending message:', error.response ? error.response.data : error.message));
 };
 
 // Send interactive button message
+export const greetingMessage = (to, name) => {
+  const data = {
+    messaging_product: "whatsapp",
+    to,
+    // context: {
+    //   message_id: prev_msg_id,
+    // },
+    type: "template",
+    template: {
+      name: "greeting",
+      language: {
+        code: "en_GB",
+        policy: "deterministic",
+      },
+      components: [
+        {
+          type: "body",
+          parameters: [
+            {
+              type: "text",
+              text: name,
+            },
+          ],
+        },
+      ],
+    },
+  };
+};
 export const sendButtonMessage = (to, text, buttons) => {
   const data = {
-    messaging_product: 'whatsapp',
+    messaging_product: "whatsapp",
     to: to,
-    type: 'interactive',
+    type: "interactive",
     interactive: {
-      type: 'button',
+      type: "button",
       body: { text },
       action: {
-        buttons: buttons.map(button => ({
-          type: 'reply',
-          reply: { id: button.id, title: button.title }
+        buttons: buttons.map((button) => ({
+          type: "reply",
+          reply: { id: button.id, title: button.title },
         })),
       },
     },
@@ -45,7 +72,7 @@ export const sendButtonMessage = (to, text, buttons) => {
   axios({
     method: "POST",
     url: WHATSAPP_API_URL,
-    data: data
+    data: data,
   });
   // axios.post(WHATSAPP_API_URL, data)
   //   .then(response => console.log('Button message sent:', response.data))
