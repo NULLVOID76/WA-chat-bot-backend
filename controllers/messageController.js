@@ -27,7 +27,8 @@ export const handleIncomingMessages = async (req, res) => {
     updateSession(from);
     
     // Send greeting with main menu
-    sendButtonMessage(from, 'Greetings of the day! Please choose from one of the following:', formatMainMenuButtons());
+    sendTextMessage(from, 'Learn more about MMMUT here: [LINK]');
+    // sendButtonMessage(from, 'Greetings of the day! Please choose from one of the following:', formatMainMenuButtons());
   } else {
     updateSession(from);  // Update session timestamp
 
