@@ -27,9 +27,9 @@ export const handleIncomingMessages = async (req, res) => {
     updateSession(from);
     
     // Send greeting with main menu
-    sendTextMessage(from, 'Learn more about MMMUT here1: [LINK]');
+    // sendTextMessage(from, 'Learn more about MMMUT here1: [LINK]');
     sendGreetingMessage(from,name,id);
-    sendTextMessage(from, 'Learn more about MMMUT here2: [LINK]');
+    // sendTextMessage(from, 'Learn more about MMMUT here2: [LINK]');
     // sendButtonMessage(from, 'Greetings of the day! Please choose from one of the following:', formatMainMenuButtons());
   } else {
     updateSession(from);  // Update session timestamp
