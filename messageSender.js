@@ -13,19 +13,20 @@ export const sendTextMessage = (to, text) => {
   };
   console.log(data);
 
-  axios({
-    method: "POST",
-    url: WHATSAPP_API_URL,
-    data: data,
-  });
-  // axios.post(WHATSAPP_API_URL, data)
-  //   .then(response => console.log('Message sent:', response.data))
-  //   .catch(error => console.error('Error sending message:', error.response ? error.response.data : error.message));
+  // axios({
+  //   method: "POST",
+  //   url: WHATSAPP_API_URL,
+  //   data: data,
+  // });
+  axios.post(WHATSAPP_API_URL, data)
+    .then(response => console.log('Message sent:', response.data))
+    .catch(error => console.error('Error sending message:', error.response ? error.response.data : error.message));
 };
 
 export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
   const data = {
     messaging_product: "whatsapp",
+    recipient_type: "individual",
     to,
     context: {
       message_id: prev_msg_id,
@@ -37,21 +38,18 @@ export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
         code: "en_GB",
         policy: "deterministic",
       },
-      components: [
-        {
-          type: "body",
-          parameters: [
-            {
-              type: "text",
-              text: senderName,
-            },
-          ],
-        },
-      ],
-    },
-    headers: {
-      "Content-Type": "application/json",
-    },
+      // components: [
+      //   {
+      //     type: "body",
+      //     parameters: [
+      //       {
+      //         type: "text",
+      //         text: senderName,
+      //       },
+      //     ],
+      //   },
+      // ],
+    }
   };
   
   axios({
