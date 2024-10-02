@@ -24,13 +24,13 @@ export const sendTextMessage = (to, text) => {
 };
 
 // Send interactive button message
-export const sendGreetingMessage = (to, name) => {
+export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
   const data = {
     messaging_product: "whatsapp",
     to,
-    // context: {
-    //   message_id: prev_msg_id,
-    // },
+    context: {
+      message_id: prev_msg_id,
+    },
     type: "template",
     template: {
       name: "greeting",
@@ -44,7 +44,7 @@ export const sendGreetingMessage = (to, name) => {
           parameters: [
             {
               type: "text",
-              text: name,
+              text: senderName,
             },
           ],
         },
@@ -83,3 +83,14 @@ export const sendButtonMessage = (to, text, buttons) => {
   //   .then(response => console.log('Button message sent:', response.data))
   //   .catch(error => console.error('Error sending button message:', error.response ? error.response.data : error.message));
 };
+export const readMessage =(prev_msg_id)=>{
+  axios({
+    method: "POST",
+    url: WHATSAPP_API_URL,
+    data: {
+      messaging_product: "whatsapp",
+      status: "read",
+      message_id: prev_msg_id,
+    },
+  });
+}
