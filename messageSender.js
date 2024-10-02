@@ -23,7 +23,6 @@ export const sendTextMessage = (to, text) => {
   //   .catch(error => console.error('Error sending message:', error.response ? error.response.data : error.message));
 };
 
-// Send interactive button message
 export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
   const data = {
     messaging_product: "whatsapp",
@@ -54,14 +53,15 @@ export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
       "Content-Type": "application/json",
     },
   };
-  // console.log(data);
   
   axios({
     method: "POST",
     url: WHATSAPP_API_URL,
     data: data,
   });
+  console.log(data);
 };
+// Send interactive button message
 export const sendButtonMessage = (to, text, buttons) => {
   const data = {
     messaging_product: "whatsapp",
