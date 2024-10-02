@@ -50,8 +50,11 @@ export const sendGreetingMessage = (to, senderName,prev_msg_id) => {
         },
       ],
     },
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
-  console.log(data);
+  // console.log(data);
   
   axios({
     method: "POST",
