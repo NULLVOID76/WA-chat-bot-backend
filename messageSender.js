@@ -4,14 +4,14 @@ const WHATSAPP_API_URL = `https://graph.facebook.com/v13.0/${process.env.PHONE_N
 
 // Send a simple text message
 export const sendTextMessage = (to, text) => {
-  console.log(WHATSAPP_API_URL);
+  // console.log(WHATSAPP_API_URL);
   const data = {
     messaging_product: "whatsapp",
     to: to,
     type: "text",
     text: { body: text },
   };
-  console.log(data);
+  // console.log(data);
 
   // axios({
   //   method: "POST",
@@ -110,7 +110,7 @@ export const readMessage = (prev_msg_id) => {
   };
   axios
     .post(WHATSAPP_API_URL, data)
-    .then((response) => console.log("Button message sent:", response.data))
+    .then((response) => console.log("message readed:", response.data))
     .catch((error) =>
       console.error(
         "Error sending button message:",
