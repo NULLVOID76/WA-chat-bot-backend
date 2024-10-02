@@ -32,8 +32,7 @@ export const sendTextMessage = (to, text) => {
 export const sendGreetingMessage = (to, senderName, prev_msg_id) => {
   const data = {
     messaging_product: "whatsapp",
-    recipient_type: "individual",
-    to,
+    to: to,
     context: {
       message_id: prev_msg_id,
     },
@@ -41,9 +40,7 @@ export const sendGreetingMessage = (to, senderName, prev_msg_id) => {
     template: {
       name: "greeting",
       language: {
-        code: "en_GB",
-        policy: "deterministic",
-      },
+        code: "en_UK"
       // components: [
       //   {
       //     type: "body",
