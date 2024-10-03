@@ -35,10 +35,10 @@ export const handleIncomingMessages = async (req, res) => {
 
     console.log("from :", from);
     console.log("name :", name);
-    console.log("text :", text.body || btnReply);
+    console.log("text :",  btnReply|| text.body );
     console.log("id :", id);
 
-    let messageBody = text.body || btnReply;
+    let messageBody =  btnReply || text.body;
     messageBody = messageBody.toLowerCase(); // User's message in lowercase
     readMessage(id);
 
