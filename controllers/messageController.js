@@ -35,11 +35,11 @@ export const handleIncomingMessages = async (req, res) => {
 
     console.log("from :", from);
     console.log("name :", name);
-    console.log("text :", text || btnReply);
+    console.log("text :", text.body || btnReply);
     console.log("id :", id);
 
-    let messageBody = text || btnReply;
-    messageBody = messageBody.body.toLowerCase(); // User's message in lowercase
+    let messageBody = text.body || btnReply;
+    messageBody = messageBody.toLowerCase(); // User's message in lowercase
     readMessage(id);
 
     // Check if session has expired
