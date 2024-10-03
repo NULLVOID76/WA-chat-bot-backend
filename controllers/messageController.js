@@ -18,7 +18,7 @@ import ChatMessage from "../models/chatMessage.js";
 // Handle incoming WhatsApp messages
 export const handleIncomingMessages = async (req, res) => {
   // console.log(req.body);
-  // console.log(req.body.entry[0].changes[0]);
+  console.log(req.body.entry[0].changes[0]);
   if (
     req.body.entry &&
     req.body.entry[0].changes &&
@@ -42,9 +42,9 @@ export const handleIncomingMessages = async (req, res) => {
 
       // Send greeting with main menu
       // sendTextMessage(from, 'Learn more about MMMUT here1: [LINK]');
-      sendGreetingMessage(from, name, id);
+      // sendGreetingMessage(from, name, id);
       // sendTextMessage(from, 'Learn more about MMMUT here2: [LINK]');
-      // sendButtonMessage(from, 'Greetings of the day! Please choose from one of the following:', formatMainMenuButtons());
+      sendButtonMessage(from, 'Greetings of the day! Please choose from one of the following:', formatMainMenuButtons());
     } else {
       updateSession(from); // Update session timestamp
 
