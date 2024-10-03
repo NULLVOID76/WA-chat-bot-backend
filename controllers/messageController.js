@@ -27,13 +27,14 @@ export const handleIncomingMessages = async (req, res) => {
   ) {
     const { from, text, id } = req.body.entry[0].changes[0].value.messages[0];
     const { name } = req.body.entry[0].changes[0].value.contacts[0].profile;
+    const { btnReply } = req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
 
     console.log("from :", from);
     console.log("name :", name);
-    console.log("text :", text);
+    console.log("text :", text||btnReply);
     console.log("id :", id);
 
-    const messageBody = text.body.toLowerCase(); // User's message in lowercase
+    const messageBody = (text||btnReply).body.toLowerCase(); // User's message in lowercase
     readMessage(id);
     // Check if session has expired
     if (isSessionExpired(from)) {
