@@ -2,9 +2,9 @@
 export const formatMainMenuButtons = () => {
     return [
       { id: 'about_mmmut', title: 'About MMMUT' },
-      { id: 'ug_admission_enquiry', title: 'UG Admission Enquiry' },
+      // { id: 'ug_admission_enquiry', title: 'UG Admission Enquiry' },
       { id: 'contact_details', title: 'Contact Details' },
-      // { id: 'show_all_programs', title: 'Show All Programs' },
+      { id: 'show_all_programs', title: 'Show All Programs' },
     ];
   };
   
