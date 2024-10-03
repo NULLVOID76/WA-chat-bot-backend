@@ -28,26 +28,32 @@ export const handleIncomingMessages = async (req, res) => {
     const { from, text, id } = req.body.entry[0].changes[0].value.messages[0];
     const { name } = req.body.entry[0].changes[0].value.contacts[0].profile;
     let btnReply;
-    if(req.body.entry[0].changes[0].value.messages[0].interactive)
-      btnReply  = req.body.entry[0].changes[0].value.messages[0].interactive.button_reply.title;
+    if (req.body.entry[0].changes[0].value.messages[0].interactive)
+      btnReply =
+        req.body.entry[0].changes[0].value.messages[0].interactive.button_reply
+          .title;
 
     console.log("from :", from);
     console.log("name :", name);
-    console.log("text :", text||btnReply);
+    console.log("text :", text || btnReply);
     console.log("id :", id);
 
-    const messageBody = (text||btnReply).body.toLowerCase(); // User's message in lowercase
+    let messageBody = text || btnReply;
+    messageBody = messageBody.body.toLowerCase(); // User's message in lowercase
     readMessage(id);
+
     // Check if session has expired
     if (isSessionExpired(from)) {
       resetSession(from);
       updateSession(from);
 
       // Send greeting with main menu
-      // sendTextMessage(from, 'Learn more about MMMUT here1: [LINK]');
       // sendGreetingMessage(from, name, id);
-      // sendTextMessage(from, 'Learn more about MMMUT here2: [LINK]');
-      sendButtonMessage(from, 'Greetings of the day! Please choose from one of the following:', formatMainMenuButtons());
+      sendButtonMessage(
+        from,
+        "Greetings of the day! Please choose from one of the following:",
+        formatMainMenuButtons()
+      );
     } else {
       updateSession(from); // Update session timestamp
 
